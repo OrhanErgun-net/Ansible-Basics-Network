@@ -1,0 +1,14 @@
+---
+- name: "get hostname"
+  hosts: r1vios
+  connection: network_cli
+  tasks:
+    - name: "show run hostname"
+      ios_command:
+        commands: "show running-config | inc hostname"
+      register: cli_result
+
+    - name: "print hostname"
+      debug:
+        msg: "{{ cli_result }}"
+        #msg: "{{ cli_result.stdout[0] }}"

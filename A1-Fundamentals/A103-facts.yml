@@ -1,0 +1,20 @@
+---
+- name: "Geting Facts"
+  hosts: r1vios
+  connection: network_cli
+  tasks:
+    - name: Gather minimal facts
+      cisco.ios.ios_facts:
+        gather_subset: min
+    
+      register: cli_result
+
+    - name: "Printing Facts"
+      debug:
+        msg: "{{ cli_result }}"
+
+    # - name: "Printing Specific Fact Values"
+    #   debug:
+    #     msg: 
+    #      - "{{ cli_result['ansible_facts']['ansible_net_hostname'] }}"
+    #      - "{{ cli_result['ansible_facts']['ansible_net_image'] }}"

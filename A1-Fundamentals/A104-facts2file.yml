@@ -1,0 +1,22 @@
+---
+- name: "Geting Facts"
+  hosts: r1vios
+  connection: network_cli
+  tasks:
+    - name: Gather minimal facts
+      cisco.ios.ios_facts:
+        gather_subset: min
+    
+      register: cli_result
+
+    - name: "Saving Facts into output file"
+      copy: 
+        content="{{ cli_result | to_nice_json }}" 
+        dest=output.json
+
+    # - name: "Saving Facts into a Named file"
+    #   copy: 
+    #     content="{{ cli_result | to_nice_json }}" 
+    #     dest={{ cli_result['ansible_facts']['ansible_net_hostname'] }}.json
+
+        
