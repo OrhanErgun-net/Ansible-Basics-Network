@@ -1,4 +1,4 @@
-# CCIE-EI-AUTOMATION
+# Ansible-Basics-Network
 This is the repository for the Ansible Basics for Network Engineers Course.
 
 ## Course
